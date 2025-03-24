@@ -1,0 +1,94 @@
+Step 1: Access Jenkins Dashboard
+Open Jenkins in your browser:
+
+arduino
+Copy
+Edit
+http://localhost:8080
+Login using your credentials.
+
+Step 2: Create a New Freestyle Project
+Click "New Item" on the left sidebar.
+
+Enter a Project Name (e.g., MyFirstFreestyleJob).
+
+Select Freestyle project.
+
+Click OK to proceed.
+
+Step 3: Configure the Freestyle Job
+A. Set Description (Optional)
+In the General section, add a description like:
+
+css
+Copy
+Edit
+This job prints a message and runs a script.
+B. Configure Source Code Management (SCM) (Optional)
+If using Git, select Git and enter your repository URL.
+
+If not using SCM, skip this step.
+
+C. Add a Build Step
+Scroll to the Build section.
+
+Click Add build step.
+
+Select:
+
+"Execute Windows batch command" (for Windows)
+
+"Execute shell" (for Linux/macOS)
+
+Enter a simple script:
+
+For Windows (Batch Command):
+
+batch
+Copy
+Edit
+echo Hello, Jenkins! This is my first job.
+For Linux/Mac (Shell Script):
+
+sh
+Copy
+Edit
+echo "Hello, Jenkins! This is my first job."
+Step 4: Save and Build
+Click Save.
+
+Click "Build Now" on the left panel.
+
+Step 5: Check Build Output
+Once the build starts, go to the Build History (bottom-left).
+
+Click on the latest Build Number (e.g., #1).
+
+Click Console Output to see logs.
+
+Expected output:
+
+vbnet
+Copy
+Edit
+Hello, Jenkins! This is my first job.
+Finished: SUCCESS
+Step 6: Automate Builds (Optional)
+To schedule the job:
+
+Click "Configure" on the job.
+
+Scroll to "Build Triggers" and enable:
+
+"Build periodically" → Run at scheduled intervals (H/5 * * * * for every 5 mins).
+
+"Poll SCM" → Check for Git updates.
+
+🎯 Next Steps
+Add Post-build Actions (Email notifications, Archive artifacts, etc.).
+
+Integrate with Git or other version control systems.
+
+Add Test Execution using custom scripts.
+
+Let me know if you need further help! 🚀

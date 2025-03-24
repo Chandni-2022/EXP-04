@@ -1,0 +1,155 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+Detailed Guide: Creating and Automating a Jenkins Pipeline Job
+This guide provides a step-by-step approach with detailed explanations of each option to create and automate a Pipeline Job in Jenkins.
+
+📌 Step 1: Create a New Pipeline Job
+1️⃣ Open Jenkins Dashboard in your browser:
+
+arduino
+Copy
+Edit
+http://localhost:8080
+2️⃣ Click "New Item" on the left sidebar.
+3️⃣ Enter a Job Name (e.g., MyFirstPipeline).
+4️⃣ Select Pipeline from the options.
+5️⃣ Click OK to proceed.
+
+📌 Step 2: Define the Pipeline Script
+1️⃣ In the Pipeline Configuration Page, scroll down to the Pipeline section.
+2️⃣ Choose Pipeline script instead of "Pipeline from SCM" (unless using Git).
+3️⃣ In the script editor, paste the following Groovy script:
+
+groovy
+Copy
+Edit
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+            }
+        }
+    }
+}
+4️⃣ Click Save.
+
+📌 Step 3: Run the Pipeline Job
+1️⃣ Click "Build Now" on the left sidebar.
+2️⃣ Navigate to "Build History" at the bottom left.
+3️⃣ Click the latest Build Number (e.g., #1).
+4️⃣ Click "Console Output" to view the logs.
+
+✅ Expected Output (If successful):
+
+scss
+Copy
+Edit
+[Pipeline] Start of Pipeline
+[Pipeline] stage
+[Pipeline] { (Build)
+Building the application...
+[Pipeline] }
+[Pipeline] stage
+[Pipeline] { (Test)
+Running tests...
+[Pipeline] }
+[Pipeline] stage
+[Pipeline] { (Deploy)
+Deploying the application...
+[Pipeline] }
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+📌 Step 4: Automate Pipeline Execution
+To schedule automatic execution, follow these detailed steps:
+
+1️⃣ Open Job Configuration
+Go to Jenkins Dashboard.
+
+Click on "MyFirstPipeline".
+
+Click "Configure" on the left sidebar.
+
+2️⃣ Enable Build Triggers
+Scroll to "Build Triggers" and check the following options:
+
+✅ Option 1: Build Periodically
+This allows you to schedule builds at regular intervals.
+
+Select "Build periodically".
+
+Enter a cron expression in the Schedule field.
+
+🔹 Example Cron Expressions:
+Expression	Runs Every...
+H/5 * * * *	Every 5 minutes
+H/10 * * * *	Every 10 minutes
+H * * * *	Every hour
+H 0 * * *	Every day at midnight
+H 12 * * 1-5	Every day at 12 PM (Mon-Fri)
+💡 Example Entry (Runs every 5 minutes):
+
+Copy
+Edit
+H/5 * * * *
+✅ Option 2: Poll SCM (For Git-based projects)
+This option checks Git for updates and triggers a build if changes are found.
+
+Select "Poll SCM".
+
+Enter a schedule expression (similar to cron).
+
+🔹 Example Poll SCM Schedules:
+Expression	Checks for Updates Every...
+H/2 * * * *	2 minutes
+H/10 * * * *	10 minutes
+H/30 * * * *	30 minutes
+H * * * *	1 hour
+H 0 * * *	Midnight
+💡 Example Entry (Checks every 2 minutes for new commits):
+
+Copy
+Edit
+H/2 * * * *
+3️⃣ Save and Apply Changes
+Click Save.
+
+Your Jenkins Pipeline Job is now automated! 🚀
